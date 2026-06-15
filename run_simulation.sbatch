@@ -18,8 +18,7 @@
 #SBATCH --time=24:00:00               # DEFAULT (medium tier) -- TUNE after a test run
 #SBATCH --output=logs/sim_%A_%a.out
 #SBATCH --error=logs/sim_%A_%a.err
-#SBATCH --account=REPLACE_ME          # <-- your SLURM account
-#SBATCH --partition=REPLACE_ME        # <-- your partition/queue
+#SBATCH --account=none          # <-- your SLURM account
 #SBATCH --mail-type=BEGIN,FAIL,END
 #SBATCH --mail-user=ddelcast@uw.edu
 

@@ -25,17 +25,13 @@
 
 set -uo pipefail
 
-# ---- Conda env with the pinned R packages (grf 2.0.2, faux, dplyr, ...) ------
+# ---- Conda env ------
 module purge
-module load REPLACE_ME_CONDA_MODULE   # e.g. miniconda3 / miniforge; remove if conda is already on PATH
+module load apps/miniforge
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate REPLACE_ME_ENV         # <-- your R conda env
+conda activate quarto
 
 # ---- Threading --------------------------------------------------------------
-# grf grows its forest with its own std::thread pool (capped by the cgroup to the
-# allocated CPUs, so more --cpus-per-task = faster). Pin BLAS/OpenMP to 1 to avoid
-# nested oversubscription. grf is reproducible for a fixed seed regardless of
-# thread count, so this does not affect results.
 export OMP_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
 export MKL_NUM_THREADS=1
